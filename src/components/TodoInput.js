@@ -1,12 +1,12 @@
-import React, { useState,useContext } from 'react';
+import React, {useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TodoContext from '../context/TodoContext';
 
 
 
 const TodoInput = () => {
-    //const [title, setTodo] = useState("");
     const {title} = useContext(TodoContext)
+    const {edit} = useContext(TodoContext)
     const {addTodo} = useContext(TodoContext)
     const {handleTodoChange} = useContext(TodoContext)
 
@@ -45,17 +45,17 @@ const TodoInput = () => {
                         type="submit"
 
                         className={
-                            // this.props.edit
-                            //     ? "btn btn-block btn-success mt-3"
-                            //     : 
+                                edit
+                                ? "btn btn-block btn-success mt-3"
+                                : 
                             "btn btn-block btn-primary mt-3"
                         }
                         onClick={todoAddHandler}
                         disabled={!title}
                       
                     >
-                        add
-                        {/* {this.props.edit ? "edit item" : "add item"} */}
+                     
+                        {edit ? "edit item" : "add item"}
                     </button>
                 </form>
             </div>

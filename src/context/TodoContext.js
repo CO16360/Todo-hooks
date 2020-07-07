@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import TodoReducer from '../Reducer/todoReducer'
 
 const initialState = {
-    title: "", todoList: [{todo:"a",id:"a"},{todo:"b",id:"b"}]
+    title: "",edit:"", todoList: []
 }
 const TodoContext = createContext(initialState);
 
@@ -43,6 +43,7 @@ export const GlobalProvider = props => {
     return (
         <TodoContext.Provider value={{
             title: state.title,
+            edit:state.edit,
             todoList: state.todoList,
             addTodo,
             deleteTodo,

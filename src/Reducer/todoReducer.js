@@ -9,8 +9,11 @@ const TodoReducer = (state, action) => {
             }
 
         case "ADD":
+             const update= state.edit ? false : false
             return {
                 ...state,
+            edit:update,
+
                 todoList: state.todoList.concat({ todo: action.todo, id: new Date() })
             }
 
@@ -27,13 +30,11 @@ const TodoReducer = (state, action) => {
                 todoList: []
             }
         case "EDIT":
-            console.log(state)
-            console.log(action.title)
-            console.log(state)
             return {
                 ...state,
                 title: action.title,
-                todoList: state.todoList.filter(t => t.id != action.id)
+                todoList: state.todoList.filter(t => t.id != action.id),
+                edit:true
             }
         default:
             return state
